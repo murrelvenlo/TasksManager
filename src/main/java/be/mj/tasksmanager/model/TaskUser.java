@@ -18,6 +18,9 @@ public class TaskUser
     private String password;
     private String phone;
 
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
     @OneToMany(mappedBy = "taskUser")
     private List<Task> taskList = new ArrayList<>();
 
@@ -25,13 +28,14 @@ public class TaskUser
     {
     }
 
-    public TaskUser(Long id, String firstName, String lastName, String email, String password, String phone, List<Task> taskList) {
+    public TaskUser(Long id, String firstName, String lastName, String email, String password, String phone, Role role, List<Task> taskList) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
         this.phone = phone;
+        this.role = role;
         this.taskList = taskList;
     }
 
@@ -89,5 +93,13 @@ public class TaskUser
 
     public void setTaskList(List<Task> taskList) {
         this.taskList = taskList;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }
